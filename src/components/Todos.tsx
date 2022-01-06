@@ -10,17 +10,10 @@ import {
 import { Box } from '@mui/system';
 import DeleteIcon from '@mui/icons-material/Delete';
 import React, { useState } from 'react';
-interface ITodoItem {
-  id: number;
-  title: string;
-  completed: false;
-}
-const Todos = () => {
-  const [todos, setTodos] = useState<ITodoItem[]>([
-    { id: 1, title: 'Title1', completed: false },
-    { id: 2, title: 'Title1', completed: false },
-    { id: 3, title: 'Title2', completed: false },
-  ]);
+import { ITodoItem } from '../store/reducers/todoReducer';
+import { connect } from 'react-redux';
+
+const Todos = ({ todos }: { todos: ITodoItem[] }) => {
   return (
     <Box>
       <List>
@@ -48,5 +41,7 @@ const Todos = () => {
     </Box>
   );
 };
-
-export default Todos;
+const mapStateToProps = (store: any) => ({
+  todos: store.TodoReducer,
+});
+export default connect(mapStateToProps, {})(Todos);
