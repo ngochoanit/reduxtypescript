@@ -1,8 +1,10 @@
 import { AppBar, Toolbar, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import React from 'react';
+import { connect } from 'react-redux';
+import { ITodoItem } from '../store/reducers/todoReducer';
 
-const Navbar = () => {
+const Navbar = ({ todos }: { todos: ITodoItem[] }) => {
   return (
     <AppBar position="static">
       <Toolbar>
@@ -15,11 +17,13 @@ const Navbar = () => {
         >
           <Typography variant="h6">Home</Typography>
           <Typography variant="h6">About</Typography>
-          <Typography variant="h6">Total Todos:3</Typography>
+          <Typography variant="h6">Total Todos: {todos.length}</Typography>
         </Box>
       </Toolbar>
     </AppBar>
   );
 };
-
-export default Navbar;
+const mapStateToProps = (store: any) => ({
+  todos: store.TodoReducer,
+});
+export default connect(mapStateToProps, {})(Navbar);

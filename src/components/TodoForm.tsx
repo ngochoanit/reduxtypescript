@@ -12,7 +12,13 @@ const TodoForm = () => {
       justifyContent="space-between"
       alignItems="center"
     >
-      <TextField fullWidth label="Size" defaultValue="Small" size="small" />
+      <TextField
+        fullWidth
+        label="Todo"
+        defaultValue="Small"
+        size="small"
+        placeholder="Enter todo"
+      />
       <Stack direction="row" spacing={2} ml={2}>
         <Button variant="outlined" startIcon={<EditOffOutlinedIcon />}>
           Edit
